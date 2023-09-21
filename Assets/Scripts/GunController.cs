@@ -1,5 +1,6 @@
 using Scripts.Interfaces;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,15 +41,16 @@ namespace Scripts
             if (!_canShoot) return;
 
             _canShoot = false;
+            SoundManager.Instance.PlaySFX(shootAudioClip);
             StartCoroutine(ResetShoot());
 
-            RaycastHit2D hit = Physics2D.Raycast(cameraController.GetWorldMousePosition(), Vector3.zero, 100, shootHitLayerMask);
-            SoundManager.Instance.PlaySFX(shootAudioClip);
-
-            if (hit.transform == null) return;
-            if (!hit.transform.TryGetComponent(out IShootable shootable)) return;
-
-            shootable.Shot();
+            RaycastHit2D[] hits = Physics2D.RaycastAll(cameraController.GetWorldMousePosition(), Vector3.zero, 100, shootHitLayerMask);
+            if (hits.Length == 0) return;
+            foreach(RaycastHit2D hit in hits)
+            {
+                if (!hit.collider.TryGetComponent(out IShootable shootable)) return;
+                shootable.Shot();
+            }
         }
 
         private IEnumerator ResetShoot()

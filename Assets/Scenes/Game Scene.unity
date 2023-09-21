@@ -1343,11 +1343,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &925865783 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7441445652767158573, guid: 7ca5a133f13e9b248a53db6f887cc267, type: 3}
-  m_PrefabInstance: {fileID: 667774158105784005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &933691689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,10 +2172,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 46028857344814692, guid: 7ca5a133f13e9b248a53db6f887cc267, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 925865783}
     - target: {fileID: 1926899255679778213, guid: 7ca5a133f13e9b248a53db6f887cc267, type: 3}
       propertyPath: m_Name
       value: Bird
@@ -2225,10 +2216,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7441445652767158573, guid: 7ca5a133f13e9b248a53db6f887cc267, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8eaaf051e02cd7d44be607018b70b9b7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
