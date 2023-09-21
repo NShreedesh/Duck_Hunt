@@ -83,6 +83,8 @@ namespace Scripts
         {
             if (_deadBirdFallTarget == transform.position.y)
             {
+                _shouldDeadfall = false;
+                Destroy(gameObject);
                 return;
             }
             
