@@ -15,6 +15,10 @@ namespace Scripts
         [SerializeField]
         private float speed = 1;
         [SerializeField]
+        private float minMoveSpeed = 1;
+        [SerializeField]
+        private float maxMoveSpeed = 2;
+        [SerializeField]
         private float fallSpeed = 1;
         private Vector2 _targetValue;
 
@@ -59,7 +63,7 @@ namespace Scripts
                     anim.Play(BirdConstants.FlyStraight);
                 }
             }
-
+            speed = Random.Range(minMoveSpeed, maxMoveSpeed);
             transform.position = Vector2.MoveTowards(transform.position, _targetValue, Time.deltaTime * speed);
         }
 
@@ -77,7 +81,10 @@ namespace Scripts
 
         private void DeadFall()
         {
-            if (_deadBirdFallTarget == transform.position.y) return;
+            if (_deadBirdFallTarget == transform.position.y)
+            {
+                return;
+            }
             
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, _deadBirdFallTarget), Time.deltaTime * fallSpeed);
         }
@@ -94,6 +101,7 @@ namespace Scripts
         private IEnumerator PlayerDeadCoroutine()
         {
             yield return _waitForDeathFalling;
+            GameManager.Instance.DecrementNumberOfBirdSpawned();
             anim.Play(BirdConstants.DeadHash);
             _shouldDeadfall = true;
         }

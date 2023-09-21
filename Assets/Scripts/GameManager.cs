@@ -1,4 +1,5 @@
 using Scripts.Enums;
+using System;
 using UnityEngine;
 
 namespace Scripts
@@ -11,6 +12,10 @@ namespace Scripts
         [field: SerializeField]
         public GameState GameState { get; private set; }
 
+        public int NumberOfBirdsSpawned { get; private set; }
+
+        public Action OnBirdShot;
+
         private void Awake()
         {
             if (Instance == null)
@@ -22,6 +27,17 @@ namespace Scripts
         public void SetGameState(GameState state)
         {
             GameState = state;
+        }
+
+        public void IncrementNumberOfBirdSpawned()
+        {
+            NumberOfBirdsSpawned++;
+        }
+
+        public void DecrementNumberOfBirdSpawned()
+        {
+            NumberOfBirdsSpawned--;
+            OnBirdShot?.Invoke();
         }
     }
 }

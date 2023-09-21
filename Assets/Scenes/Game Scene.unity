@@ -1878,6 +1878,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607d33179893d874c9d988c33e42900c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  birdControllerPrefab: {fileID: 46028857344814692, guid: 7ca5a133f13e9b248a53db6f887cc267, type: 3}
+  xMinSpawnPosition: -1
+  xMaxSpawnPosition: 1
+  ySpawnPosition: -0.5
 --- !u!1 &1588315164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b9b352387f15c4ca2b7a818464ef04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  birdSpawnner: {fileID: 1365289992}
   dogIntroAnimationLength: 2.3
+  firstBirdSpawnPosition: {x: -0.8, y: -0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
