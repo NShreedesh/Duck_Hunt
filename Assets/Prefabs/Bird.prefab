@@ -199,5 +199,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 7441445652767158573}
   speed: 0.5
-  fallSpeed: 1
+  fallSpeed: 1.5
   _deadBirdFallTarget: -1
+  waitForDeathFallingTime: 0.5

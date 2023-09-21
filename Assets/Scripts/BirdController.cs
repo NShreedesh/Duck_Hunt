@@ -49,7 +49,17 @@ namespace Scripts
             if (_targetValue == (Vector2)transform.position)
             {
                 _targetValue = new Vector2(Random.Range(-1.25f, 1.25f), Random.Range(0, 0.6f));
+
+                if (_targetValue.y > transform.position.y + 0.3f)
+                {
+                    anim.Play(BirdConstants.FlyUp);
+                }
+                else
+                {
+                    anim.Play(BirdConstants.FlyStraight);
+                }
             }
+
             transform.position = Vector2.MoveTowards(transform.position, _targetValue, Time.deltaTime * speed);
         }
 
