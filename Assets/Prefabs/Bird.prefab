@@ -202,5 +202,6 @@ MonoBehaviour:
   minMoveSpeed: 0.5
   maxMoveSpeed: 2
   fallSpeed: 1.5
-  _deadBirdFallTarget: -1
+  _deadBirdFallTarget: -0.6
   waitForDeathFallingTime: 0.5
+  duckCaughtAudioClip: {fileID: 8300000, guid: 457cb1567cec9b240a9ee29c3474ff8c, type: 3}

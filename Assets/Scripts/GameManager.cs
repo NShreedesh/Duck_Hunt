@@ -14,8 +14,6 @@ namespace Scripts
 
         public int NumberOfBirdsSpawned { get; private set; }
 
-        public Action OnBirdShot;
-
         private void Awake()
         {
             if (Instance == null)
@@ -37,7 +35,6 @@ namespace Scripts
         public void DecrementNumberOfBirdSpawned()
         {
             NumberOfBirdsSpawned--;
-            OnBirdShot?.Invoke();
         }
     }
 }

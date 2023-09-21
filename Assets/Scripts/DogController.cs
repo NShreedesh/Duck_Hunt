@@ -1,11 +1,16 @@
 using Scripts.Enums;
 using System.Collections;
+using UnityEditor.Overlays;
 using UnityEngine;
 
 namespace Scripts
 {
     public class DogController : MonoBehaviour
     {
+        [Header("Components")]
+        [SerializeField]
+        private Animator anim;
+
         [Header("Scripts")]
         [SerializeField]
         private BirdSpawner birdSpawnner;
@@ -25,6 +30,8 @@ namespace Scripts
         private void Start()
         {
             StartCoroutine(DogAnimationIntroCompletion());
+
+            BirdController.OnBirdDeadAction += PlayDogCaughtOneDuckAnimation;
         }
 
         private IEnumerator DogAnimationIntroCompletion()
@@ -34,8 +41,17 @@ namespace Scripts
             birdSpawnner.Spawn(firstBirdSpawnPosition);
         }
 
+        private void PlayDogCaughtOneDuckAnimation(float dogXPosition)
+        {
+            GameManager.Instance.SetGameState(GameState.Pause);
+            transform.position = new Vector2(dogXPosition, transform.position.y);
+            anim.Play(DogConstants.OneDuckCaught);
+            GameManager.Instance.SetGameState(GameState.Play);
+        }
+
         private void OnDisable()
         {
+            BirdController.OnBirdDeadAction -= PlayDogCaughtOneDuckAnimation;
             StopAllCoroutines();
         }
     }

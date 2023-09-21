@@ -31,6 +31,13 @@ namespace Scripts
         private bool _shouldDeadfall;
         private WaitForSeconds _waitForDeathFalling;
 
+        [Header("Audio Clips")]
+        [SerializeField]
+        private AudioClip duckCaughtAudioClip;
+
+        public static event System.Action OnBirdShot;
+        public static event System.Action<float> OnBirdDeadAction;
+
         private void Awake()
         {
             _waitForDeathFalling = new WaitForSeconds(waitForDeathFallingTime);
@@ -84,6 +91,10 @@ namespace Scripts
             if (_deadBirdFallTarget == transform.position.y)
             {
                 _shouldDeadfall = false;
+                GameManager.Instance.DecrementNumberOfBirdSpawned();
+                SoundManager.Instance.PlaySFX(duckCaughtAudioClip);
+                OnBirdShot?.Invoke();
+                OnBirdDeadAction?.Invoke(transform.position.x);
                 Destroy(gameObject);
                 return;
             }
@@ -103,7 +114,6 @@ namespace Scripts
         private IEnumerator PlayerDeadCoroutine()
         {
             yield return _waitForDeathFalling;
-            GameManager.Instance.DecrementNumberOfBirdSpawned();
             anim.Play(BirdConstants.DeadHash);
             _shouldDeadfall = true;
         }

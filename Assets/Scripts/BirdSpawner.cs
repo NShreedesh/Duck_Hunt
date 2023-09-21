@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Scripts
@@ -16,13 +17,25 @@ namespace Scripts
         [SerializeField]
         private float ySpawnPosition = -0.5f;
 
+        [Header("Bird Spawn Delay Values")]
+        [SerializeField]
+        private float timeToWaitforRandomSpawn = 1f;
+        private WaitForSeconds _waitForRandomSpawnTime;
+
         private void Start()
         {
-            GameManager.Instance.OnBirdShot += RandomSpawn;
+            _waitForRandomSpawnTime = new WaitForSeconds(timeToWaitforRandomSpawn);
+            BirdController.OnBirdShot += RandomSpawn;
         }
 
-        public void RandomSpawn()
+        private void RandomSpawn()
         {
+            StartCoroutine(RandomSpawnCoroutine());
+        }
+
+        private IEnumerator RandomSpawnCoroutine()
+        {
+            yield return _waitForRandomSpawnTime;
             float xPosition = Random.Range(xMinSpawnPosition, xMaxSpawnPosition);
             Spawn(new Vector2(xPosition, ySpawnPosition));
         }
@@ -38,7 +51,8 @@ namespace Scripts
 
         private void OnDisable()
         {
-            GameManager.Instance.OnBirdShot -= RandomSpawn;
+            BirdController.OnBirdShot -= RandomSpawn;
+            StopAllCoroutines();
         }
     }
 }
