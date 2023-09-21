@@ -38,9 +38,31 @@
                 },
                 {
                     "name": "",
+                    "id": "a564057a-ae2f-4d8a-aeb9-15c66f390af4",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "dedd85e0-74e3-4529-ad13-add4cca2dab6",
                     "path": "<Mouse>/press",
                     "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac464c7d-aac8-471f-a696-23c7684b8de5",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
