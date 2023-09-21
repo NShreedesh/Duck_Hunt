@@ -35,6 +35,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""79aecff7-abac-486c-a821-4c6056b80d87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""CursorPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dedd85e0-74e3-4529-ad13-add4cca2dab6"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_CursorPosition = m_Player.FindAction("CursorPosition", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_CursorPosition;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
         public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @CursorPosition => m_Wrapper.m_Player_CursorPosition;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @CursorPosition.started += instance.OnCursorPosition;
             @CursorPosition.performed += instance.OnCursorPosition;
             @CursorPosition.canceled += instance.OnCursorPosition;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -143,6 +169,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @CursorPosition.started -= instance.OnCursorPosition;
             @CursorPosition.performed -= instance.OnCursorPosition;
             @CursorPosition.canceled -= instance.OnCursorPosition;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -163,5 +192,6 @@ public partial class @Input: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnCursorPosition(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

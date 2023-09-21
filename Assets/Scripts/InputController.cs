@@ -10,9 +10,13 @@ namespace Scripts
         [field: Header("Input Values")]
         public Vector2 CursorPosition { get; private set; }
 
+        public InputAction ShootInputAction { get; private set; }
+
         private void Awake()
         {
-            _input = new Input();   
+            _input = new Input();
+
+            ShootInputAction = _input.Player.Shoot;
         }
 
         private void OnEnable()
