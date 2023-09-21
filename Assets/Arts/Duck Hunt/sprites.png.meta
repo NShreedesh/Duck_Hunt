@@ -627,7 +627,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: redbird_fly_
+      name: redbird_fly_2
       rect:
         serializedVersion: 2
         x: 68
@@ -832,7 +832,7 @@ TextureImporter:
       redbird_die_1: 161780312
       redbird_die_2: 1678326285
       redbird_die_3: 1402578762
-      redbird_fly_: -555146414
+      redbird_fly_2: -555146414
       redbird_logo: 508305524
       redbird_straight_fly_1: 1223321199
       redbird_straight_fly_2: -252731530

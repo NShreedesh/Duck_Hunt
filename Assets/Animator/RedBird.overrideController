@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RedBird
+  m_Controller: {fileID: 9100000, guid: 8eaaf051e02cd7d44be607018b70b9b7, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 91b26372a3b49414db7553e2086347ef, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c31679ffd7f30540972a1e6f8e97690, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2adbb9def21f226489139d5c7158dda2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4ec00dd64c186434cb2146f3af4d4325, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bddad9e7449ae6a41802279a8101b31d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bf5f90b746f80a340ad429a4b48fadc0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e9397cc87e6488e4d9960f4b29aca933, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b73b44f6821c8914f83da56ecb91bf8a, type: 2}
